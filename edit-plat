@@ -1,0 +1,1 @@
+kubectl edit deployment platform-controller -n platform

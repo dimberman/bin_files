@@ -1,0 +1,11 @@
+CURRENT=`pwd`
+cd $AIRFLOW_CODE
+python setup.py build
+python setup.py build bdist_wheel
+rm $MOL_CODE/src/docker/airflow/*
+cp $AIRFLOW_CODE/dist/* $MOL_CODE/src/docker/airflow
+cd $MOL_CODE
+docker build -t artprod.dev.bloomberg.com/bb-ds-airflow/airflow-slave src/docker/
+cd $AIRDS
+docker build -t artprod.dev.bloomberg.com/bb-ds-airflow/airflow-kube:1.0 .
+cd $CURRENT

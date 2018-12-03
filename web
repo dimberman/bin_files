@@ -1,0 +1,5 @@
+WEB=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' | grep $1 | head -1)
+echo $WEB
+PORT=$2
+PORT2=$3
+kubectl port-forward $WEB $PORT:$PORT2

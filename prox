@@ -1,0 +1,26 @@
+#!/bin/sh
+die () {
+  echo >&2 "$@"
+}
+if [[ ! ("$#" == 1) ]]; then
+  die "1 argument required (off, int, internal, ext, or external), $# provided"
+fi
+if [ "$1" == "off" ]; then
+  echo 'Switching proxies off...'
+  unset HTTP_PROXY
+  unset http_proxy
+  unset HTTPS_PROXY
+  unset https_proxy
+elif [ "$1" == "int" ] || [ "$1" == "internal" ] ; then
+  echo 'Switching proxies to internal...'
+  export HTTP_PROXY=http://bproxy.tdmz1.bloomberg.com:80
+  export http_proxy=http://bproxy.tdmz1.bloomberg.com:80
+  export HTTPS_PROXY=http://bproxy.tdmz1.bloomberg.com:80
+  export https_proxy=http://bproxy.tdmz1.bloomberg.com:80
+elif [ "$1" == "ext" ] || [ "$1" == "external" ] ; then
+  echo 'Switching proxies to external...'
+  export HTTP_PROXY=http://proxy.inet.bloomberg.com:81
+  export http_proxy=http://proxy.inet.bloomberg.com:81
+  export HTTPS_PROXY=http://proxy.inet.bloomberg.com:81
+  export https_proxy=http://proxy.inet.bloomberg.com:81
+fi

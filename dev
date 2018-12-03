@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export DISPLAY=0:0
+tkdssh dnj2-bfs-r6n07 "tmux a -d || tmux"

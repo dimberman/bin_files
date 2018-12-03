@@ -1,0 +1,8 @@
+POD=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' | grep $1 | head -1)
+CONTAINER=""
+if [ $# -gt 1 ]
+    then
+	CONTAINER="-c  $2"
+fi
+
+kubectl exec -it $POD $CONTAINER /bin/bash

@@ -1,0 +1,8 @@
+POD=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' | grep $1 | head -1)
+
+PLAT=""
+if [ "$2" = "-p" ]; then
+    PLAT="--namespace=platform"
+fi
+
+kubectl describe pod $POD $PLAT

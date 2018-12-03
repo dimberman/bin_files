@@ -1,0 +1,1 @@
+minikube start --vm-driver hyperkit --insecure-registry 10.255.146.185:5000

@@ -1,0 +1,5 @@
+export http_proxy=http://proxy.inet.bloomberg.com:81
+export https_proxy=http://proxy.inet.bloomberg.com:81
+export HTTP_PROXY=http://proxy.inet.bloomberg.com:81
+export HTTPS_PROXY=http://proxy.inet.bloomberg.com:81
+export no_proxy=bbgithub.dev.bloomberg.com,localhost

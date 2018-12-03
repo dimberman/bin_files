@@ -1,0 +1,2 @@
+WEB=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' | grep web | head -1)
+kubectl port-forward $WEB 8080:8080
